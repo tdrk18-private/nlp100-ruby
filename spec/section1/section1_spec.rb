@@ -11,4 +11,8 @@ describe 'Section1' do
   it 'extract odd strings from text' do
     expect(Section1.extract_odd_string('パタトクカシーー')).to eq 'パトカー'
   end
+
+  it 'merge two string alternately' do
+    expect(Section1.merge_strings('パトカー', 'タクシー')).to eq 'パタトクカシーー'
+  end
 end

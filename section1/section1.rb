@@ -15,4 +15,18 @@ module Section1
   def extract_odd_string(text)
     text.split('').each_slice(2).map(&:first).join
   end
+
+  # @param [String] l_str
+  # @param [String] r_str
+  # @return [String]
+  def merge_strings(l_str, r_str)
+    array = []
+    first_array = l_str.split('')
+    second_array = r_str.split('')
+    [l_str.length, r_str.length].max.times do |index|
+      array.append first_array[index] if first_array.length > index
+      array.append second_array[index] if second_array.length > index
+    end
+    array.join
+  end
 end
