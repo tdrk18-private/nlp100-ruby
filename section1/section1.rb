@@ -9,4 +9,10 @@ module Section1
   def reverse(str)
     str.reverse
   end
+
+  # @param [String] text
+  # @return [String]
+  def extract_odd_string(text)
+    text.split('').each_slice(2).map(&:first).join
+  end
 end
