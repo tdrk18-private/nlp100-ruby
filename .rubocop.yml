@@ -2,6 +2,13 @@ AllCops:
   Exclude:
     - spec/spec_helper.rb
 
+Naming/MethodParameterName:
+  MinNameLength: 1
+Layout/LineLength:
+  Max: 120
+Metrics/BlockLength:
+  Max: 50
+
 Lint/RaiseException:
   Enabled: true
 Lint/StructNewOverride:
