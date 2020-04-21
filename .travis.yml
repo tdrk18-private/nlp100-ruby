@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.7.1
+install:
+  - gem install bundler
+  - bundle install --jobs 4 --retry 3
+script:
+  - bundle exec rubocop
+  - bundle exec rspec
