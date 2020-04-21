@@ -15,4 +15,11 @@ describe 'Section1' do
   it 'merge two string alternately' do
     expect(Section1.merge_strings('パトカー', 'タクシー')).to eq 'パタトクカシーー'
   end
+
+  it 'create list of count of alphabets' do
+    text = 'Now I need a drink, alcoholic of course, ' \
+         + 'after the heavy lectures involving quantum mechanics.'
+    ans = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]
+    expect(Section1.pi_list(text)).to eq ans
+  end
 end

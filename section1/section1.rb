@@ -29,4 +29,15 @@ module Section1
     end
     array.join
   end
+
+  # @param [String] str
+  # @return [[Int]]
+  def pi_list(str)
+    result = []
+    str_list = str.split
+    str_list.each do |s|
+      result.append(s.gsub(/\W/, '').length)
+    end
+    result
+  end
 end
