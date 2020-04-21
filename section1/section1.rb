@@ -40,4 +40,17 @@ module Section1
     end
     result
   end
+
+  # @param [String] str
+  # @param [[Int]] one_length_list
+  # @return [[String: Int]]
+  def element_symbol(str, one_length_list)
+    result = {}
+    str_list = str.split
+    str_list.each.with_index(1) do |s, idx|
+      key = one_length_list.include?(idx) ? s.slice(0, 1) : s.slice(0, 2)
+      result[:"#{key}"] = idx
+    end
+    result
+  end
 end

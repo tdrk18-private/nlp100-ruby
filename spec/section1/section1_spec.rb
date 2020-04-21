@@ -22,4 +22,14 @@ describe 'Section1' do
     ans = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]
     expect(Section1.pi_list(text)).to eq ans
   end
+
+  it 'create list of element symbol' do
+    text = 'Hi He Lied Because Boron Could Not Oxidize Fluorine. ' \
+         + 'New Nations Might Also Sign Peace Security Clause. Arthur King Can.'
+    one_length_list = [1, 5, 6, 7, 8, 9, 15, 16, 19]
+    ans = { 'Be': 4, 'C': 6, 'B': 5, 'Ca': 20, 'F': 9, 'S': 16, 'H': 1,
+            'K': 19, 'Al': 13, 'Mi': 12, 'Ne': 10, 'O': 8, 'Li': 3, 'P': 15,
+            'Si': 14, 'Ar': 18, 'Na': 11, 'N': 7, 'Cl': 17, 'He': 2 }
+    expect(Section1.element_symbol(text, one_length_list)).to eq ans
+  end
 end
