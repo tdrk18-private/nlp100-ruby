@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.1
+    steps:
+      - checkout
+      - run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - run: |
+          rubocop
+          rspec
