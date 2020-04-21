@@ -32,4 +32,12 @@ describe 'Section1' do
             'Si': 14, 'Ar': 18, 'Na': 11, 'N': 7, 'Cl': 17, 'He': 2 }
     expect(Section1.element_symbol(text, one_length_list)).to eq ans
   end
+
+  it 'return n-gram for strings' do
+    text = 'I am an NLPer'
+    ans_char = %w[Ia am ma an nN NL LP Pe er]
+    ans_word = ['I am', 'am an', 'an NLPer']
+    expect(Section1.n_gram(2, text, Section1::GramType::CHARACTER)).to eq ans_char
+    expect(Section1.n_gram(2, text, Section1::GramType::WORD)).to eq ans_word
+  end
 end

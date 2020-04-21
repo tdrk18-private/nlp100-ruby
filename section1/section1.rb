@@ -53,4 +53,51 @@ module Section1
     end
     result
   end
+
+  # @param [Int] n
+  # @param [String] string
+  # @param [GramType] type
+  # @return [[String]]
+  def n_gram(n, string, type)
+    case type
+    when GramType::WORD
+      word_n_gram(n, string)
+    when GramType::CHARACTER
+      character_n_gram(n, string)
+    else
+      ''
+    end
+  end
+
+  # @param [Int] n
+  # @param [String] string
+  # @return [[String]]
+  def word_n_gram(n, string)
+    s = +string
+    list = s.split
+    result = []
+    (list.length - n + 1).times do |idx|
+      result.append(list[idx, n].join(' '))
+    end
+    result
+  end
+
+  # @param [Int] n
+  # @param [String] string
+  # @return [[String]]
+  def character_n_gram(n, string)
+    s = +string
+    list = s.gsub(' ', '').split('')
+    result = []
+    (list.length - n + 1).times do |idx|
+      result.append(list[idx, n].join)
+    end
+    result
+  end
+
+  # enum for n-gram type
+  module GramType
+    CHARACTER = 1
+    WORD = 2
+  end
 end
