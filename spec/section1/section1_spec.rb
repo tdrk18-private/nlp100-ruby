@@ -53,4 +53,8 @@ describe 'Section1' do
     expect(bi_gram_x.include?('se')).to eq true
     expect(bi_gram_y.include?('se')).to eq false
   end
+
+  it 'create text by template' do
+    expect(Section1.template(12, '気温', 22.4)).to eq '12時の気温は22.4'
+  end
 end

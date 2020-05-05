@@ -116,6 +116,14 @@ module Section1
     Set.new(x) - Set.new(y)
   end
 
+  # @param [Int] x
+  # @param [String] y
+  # @param [Double] z
+  # @return [String]
+  def template(x, y, z)
+    "#{x}時の#{y}は#{z}"
+  end
+
   # enum for n-gram type
   module GramType
     CHARACTER = 1
