@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../util/string'
+
 # https://nlp100.github.io/ja/ch01.html
 module Section1
   module_function
@@ -28,5 +30,132 @@ module Section1
       array.append second_array[index] if second_array.length > index
     end
     array.join
+  end
+
+  # @param [String] str
+  # @return [[Int]]
+  def pi_list(str)
+    result = []
+    str_list = str.split
+    str_list.each do |s|
+      result.append(s.gsub(/\W/, '').length)
+    end
+    result
+  end
+
+  # @param [String] str
+  # @param [[Int]] one_length_list
+  # @return [[String: Int]]
+  def element_symbol(str, one_length_list)
+    result = {}
+    str_list = str.split
+    str_list.each.with_index(1) do |s, idx|
+      key = one_length_list.include?(idx) ? s.slice(0, 1) : s.slice(0, 2)
+      result[:"#{key}"] = idx
+    end
+    result
+  end
+
+  # @param [Int] n
+  # @param [String] string
+  # @param [GramType] type
+  # @return [[String]]
+  def n_gram(n, string, type)
+    case type
+    when GramType::WORD
+      word_n_gram(n, string)
+    when GramType::CHARACTER
+      character_n_gram(n, string)
+    else
+      ''
+    end
+  end
+
+  # @param [Int] n
+  # @param [String] string
+  # @return [[String]]
+  def word_n_gram(n, string)
+    s = +string
+    list = s.split
+    result = []
+    (list.length - n + 1).times do |idx|
+      result.append(list[idx, n].join(' '))
+    end
+    result
+  end
+
+  # @param [Int] n
+  # @param [String] string
+  # @return [[String]]
+  def character_n_gram(n, string)
+    s = +string
+    list = s.gsub(' ', '').split('')
+    result = []
+    (list.length - n + 1).times do |idx|
+      result.append(list[idx, n].join)
+    end
+    result
+  end
+
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def union(x, y)
+    Set.new(x) + Set.new(y)
+  end
+
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def intersection(x, y)
+    Set.new(x) & Set.new(y)
+  end
+
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def difference(x, y)
+    Set.new(x) - Set.new(y)
+  end
+
+  # @param [Int] x
+  # @param [String] y
+  # @param [Double] z
+  # @return [String]
+  def template(x, y, z)
+    "#{x}時の#{y}は#{z}"
+  end
+
+  # @param [String] x
+  # @return [String]
+  def cipher(x)
+    res = ''
+    list = x.split('')
+    list.each do |s|
+      res += s.lower? ? (219 - s.ord).chr : s
+    end
+    res
+  end
+
+  # @param [String] x
+  # @return [String]
+  def typoglycemia(x)
+    res = []
+    list = x.split(' ')
+    list.each do |s|
+      if s.length <= 4
+        res.append(s)
+      else
+        internal = s[1...(s.length - 1)].split('').shuffle.join('')
+        res.append("#{s[0]}#{internal}#{s[-1]}")
+      end
+    end
+    res.join(' ')
+  end
+
+  # enum for n-gram type
+  module GramType
+    CHARACTER = 1
+    WORD = 2
   end
 end
