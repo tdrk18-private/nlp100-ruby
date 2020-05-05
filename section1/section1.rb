@@ -95,6 +95,27 @@ module Section1
     result
   end
 
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def union(x, y)
+    Set.new(x) + Set.new(y)
+  end
+
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def intersection(x, y)
+    Set.new(x) & Set.new(y)
+  end
+
+  # @param [String] x
+  # @param [String] y
+  # @return Set[String]
+  def difference(x, y)
+    Set.new(x) - Set.new(y)
+  end
+
   # enum for n-gram type
   module GramType
     CHARACTER = 1

@@ -40,4 +40,17 @@ describe 'Section1' do
     expect(Section1.n_gram(2, text, Section1::GramType::CHARACTER)).to eq ans_char
     expect(Section1.n_gram(2, text, Section1::GramType::WORD)).to eq ans_word
   end
+
+  it 'calculate set of n-gram' do
+    text_x = 'paraparaparadise'
+    text_y = 'paragraph'
+    bi_gram_x = Section1.n_gram(2, text_x, Section1::GramType::CHARACTER)
+    bi_gram_y = Section1.n_gram(2, text_y, Section1::GramType::CHARACTER)
+    union = Set['pa', 'ar', 'ra', 'ap', 'ad', 'di', 'is', 'se', 'ag', 'gr', 'ph']
+    expect(Section1.union(bi_gram_x, bi_gram_y)).to eq union
+    expect(Section1.intersection(bi_gram_x, bi_gram_y)).to eq Set['pa', 'ar', 'ra', 'ap']
+    expect(Section1.difference(bi_gram_x, bi_gram_y)).to eq Set['ad', 'di', 'is', 'se']
+    expect(bi_gram_x.include?('se')).to eq true
+    expect(bi_gram_y.include?('se')).to eq false
+  end
 end
