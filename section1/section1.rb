@@ -124,6 +124,27 @@ module Section1
     "#{x}時の#{y}は#{z}"
   end
 
+  # @param [String] x
+  # @return [String]
+  def cipher(x)
+    res = ''
+    list = x.split('')
+    list.length.times do |i|
+      s = list[i]
+      res += lower?(s) ? (219 - s.ord).chr : s
+    end
+    res
+  end
+
+  # @param [String] x
+  # @return [Boolean]
+  def lower?(x)
+    cmp = (x =~ /^[a-z]+$/)
+    return false if cmp.nil?
+
+    cmp.zero?
+  end
+
   # enum for n-gram type
   module GramType
     CHARACTER = 1

@@ -57,4 +57,12 @@ describe 'Section1' do
   it 'create text by template' do
     expect(Section1.template(12, '気温', 22.4)).to eq '12時の気温は22.4'
   end
+
+  it 'return cipher text' do
+    text = 're1Ae'
+    encrypt = Section1.cipher(text)
+    expect(encrypt).to eq 'iv1Av'
+    decrypt = Section1.cipher(encrypt)
+    expect(decrypt).to eq text
+  end
 end
