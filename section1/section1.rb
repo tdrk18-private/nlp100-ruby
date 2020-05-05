@@ -129,8 +129,7 @@ module Section1
   def cipher(x)
     res = ''
     list = x.split('')
-    list.length.times do |i|
-      s = list[i]
+    list.each do |s|
       res += lower?(s) ? (219 - s.ord).chr : s
     end
     res
@@ -150,8 +149,7 @@ module Section1
   def typoglycemia(x)
     res = []
     list = x.split(' ')
-    list.length.times do |i|
-      s = list[i]
+    list.each do |s|
       if s.length <= 4
         res.append(s)
       else
