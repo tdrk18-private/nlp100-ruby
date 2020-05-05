@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require '../util/string'
+require_relative '../util/string'
 
 # https://nlp100.github.io/ja/ch01.html
 module Section1
