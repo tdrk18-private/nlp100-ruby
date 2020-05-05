@@ -65,4 +65,27 @@ describe 'Section1' do
     decrypt = Section1.cipher(encrypt)
     expect(decrypt).to eq text
   end
+
+  it 'shuffle text if its length is 5 over' do
+    text = 'I couldn’t believe that I could actually understand what I was reading : ' \
+         + 'the phenomenal power of the human mind .'
+    result = Section1.typoglycemia(text)
+    result_list = result.split(' ')
+    expect(result_list.count).to eq 21
+    expect(result_list[0]).to eq 'I'
+    expect(result_list[3]).to eq 'that'
+    expect(result_list[8]).to eq 'what'
+    expect(result_list[10]).to eq 'was'
+    expect(result_list[19]).to eq 'mind'
+    expect(result_list[2][0]).to eq 'b'
+    expect(result_list[2][-1]).to eq 'e'
+    expect(result_list[5][0]).to eq 'c'
+    expect(result_list[5][-1]).to eq 'd'
+    expect(result_list[6][0]).to eq 'a'
+    expect(result_list[6][-1]).to eq 'y'
+    expect(result_list[7][0]).to eq 'u'
+    expect(result_list[7][-1]).to eq 'd'
+    expect(result_list[18][0]).to eq 'h'
+    expect(result_list[18][-1]).to eq 'n'
+  end
 end

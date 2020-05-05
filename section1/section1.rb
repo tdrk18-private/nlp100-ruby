@@ -145,6 +145,23 @@ module Section1
     cmp.zero?
   end
 
+  # @param [String] x
+  # @return [String]
+  def typoglycemia(x)
+    res = []
+    list = x.split(' ')
+    list.length.times do |i|
+      s = list[i]
+      if s.length <= 4
+        res.append(s)
+      else
+        internal = s[1...(s.length - 1)].split('').shuffle.join('')
+        res.append("#{s[0]}#{internal}#{s[-1]}")
+      end
+    end
+    res.join(' ')
+  end
+
   # enum for n-gram type
   module GramType
     CHARACTER = 1
