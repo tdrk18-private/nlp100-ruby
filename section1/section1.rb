@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require '../util/string'
+
 # https://nlp100.github.io/ja/ch01.html
 module Section1
   module_function
@@ -130,18 +132,9 @@ module Section1
     res = ''
     list = x.split('')
     list.each do |s|
-      res += lower?(s) ? (219 - s.ord).chr : s
+      res += s.lower? ? (219 - s.ord).chr : s
     end
     res
-  end
-
-  # @param [String] x
-  # @return [Boolean]
-  def lower?(x)
-    cmp = (x =~ /^[a-z]+$/)
-    return false if cmp.nil?
-
-    cmp.zero?
   end
 
   # @param [String] x
